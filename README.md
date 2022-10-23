@@ -1,4 +1,4 @@
-# Framework <span id = "top"></span>
+# Introduction <span id = "top"></span>
 
 This is a highly felxible framework for a vision system that performs **coarse-grained** object detection from RGB images and **classifies** the detected objects basd on **fine-grained attributes**.
 
