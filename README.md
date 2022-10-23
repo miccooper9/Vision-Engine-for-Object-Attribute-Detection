@@ -90,24 +90,24 @@ An example dataset with images and annotations can be found [here](https://drive
 
 1. Generate training samples for object detector and classifier networks.  
 ```
-python gen_training_data.py --train_annotations ANNOTATION_PATH --train_images IMAGES_PATH --format IMAGE_FORMAT
+python src/gen_training_data.py --train_annotations ANNOTATION_PATH --train_images IMAGES_PATH --format IMAGE_FORMAT
 ```
 2. Train object detector. 
 ```
-python keras-frcnn/train_frcnn.py
+python src/keras-frcnn/train_frcnn.py
 ```
 
 3. Train classifier networks.
 ```
-python safety_helmet_classifier_train.py
-python mask_classifier_train.py
+python src/train_helmet_classifier.py
+python src/train_mask_classifier.py
 ```
 
 # Inference <span id = "inf"></span>
 
 1. Get coarse predictions from object detector.
 ```
-python keras-frcnn/test_frcnn.py -p TEST_IMAGES_PATH -o COARSE_OUTPUT_PATH
+python src/keras-frcnn/test_frcnn.py -p TEST_IMAGES_PATH -o COARSE_OUTPUT_PATH
 ```
 The coarse predictions can be found in 'COARSE_OUTPUT_PATH/frcnnoutput.csv' in the following format :
 ```
@@ -116,7 +116,7 @@ image_name,xtl,ytl,xbr,ybr,coarse_label
 
 2. Get fine attribute predictions from classifier networks.
 ```
-python complete_classifier_network_test.py --object_preds COARSE_OUTPUT_PATH/frcnnoutput.csv --output FINE_OUTPUT_PATH
+python src/test_classifiers.py --object_preds COARSE_OUTPUT_PATH/frcnnoutput.csv --output FINE_OUTPUT_PATH
 ```
 the fine predictions will be in the following format :
 ```
